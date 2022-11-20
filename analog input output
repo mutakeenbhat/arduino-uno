@@ -1,0 +1,25 @@
+// C++ code
+int analog_ip=A0;
+int LED=3;
+int inputval=0;
+int old_ip_val=0;
+void setup()
+{
+  pinMode(LED,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  inputval=analogRead(analog_ip);
+  if(inputval<old_ip_val-5 || inputval>old_ip_val+5){
+    Serial.print("Input Value ..");
+    Serial.print(inputval);
+    Serial.print("\n LED Brightness :");
+     Serial.print(inputval/4);
+      Serial.print("\n");      
+      analogWrite(LED,inputval/4);
+  delay(500); // Wait for 500 millisecond(s)
+  old_ip_val=inputval;
+}
+}
