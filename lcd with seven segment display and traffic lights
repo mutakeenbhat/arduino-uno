@@ -1,0 +1,128 @@
+
+// C++ code
+#include<LiquidCrystal.h>
+LiquidCrystal LCD(13,12,11,10,9,8);//connecting segment A to PIN2
+
+ #define segA 5 // connect6ng segment B to PIN2
+ # define segB 6 // connect6ng segment B to PIN3
+ # define segC 7 // connect7ng segment C to PIN4
+ # define segD A0 // connectA0ng segment D to PIN5
+ # define segE A1 // connectA1ng segment E to PIN6
+ # define segF A2 // connectA2ng segment F to PIN7
+ # define segG A3 // connectA3ng segment G to PIN8
+ //# define dp 9 // connecting dp to PIN9
+                int COUNT;//count integer for 0-9 increment
+int Red=4;
+int Yellow=3;
+int Green=2;
+
+void setup()
+{
+  LCD.begin(16,2);
+  LCD.home();
+  for (int i=5;i<=7;i++) 
+ 
+  {
+    pinMode(i, OUTPUT);// taking all pins from 2-9 as output
+  }
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
+  pinMode(A3, OUTPUT);
+  
+   pinMode(Red, OUTPUT);
+   pinMode(Yellow, OUTPUT);
+   pinMode(Green, OUTPUT);
+  }
+           
+void loop()
+{
+  digitalWrite(Red, HIGH);
+  LCD.clear();
+  LCD.print("STOP");
+  counter();
+  digitalWrite(Red, LOW);
+  digitalWrite(Yellow, HIGH);
+  LCD.clear();
+  LCD.print("WAIT");
+  counter();
+  digitalWrite(Yellow, LOW);
+  digitalWrite(Green, HIGH);
+  LCD.clear();
+  LCD.print("GO");
+  counter();
+  digitalWrite(Green, LOW);
+ 
+}
+void counter()
+{
+  for(COUNT=5;COUNT>=1;COUNT--)
+ {
+   
+switch (COUNT)
+                {
+ 
+ 
+                case 1:// when count value is 1 show”1” on disp
+                digitalWrite(segA, HIGH);
+                digitalWrite(segB, LOW);
+                digitalWrite(segC, LOW);
+                digitalWrite(segD, HIGH);
+                digitalWrite(segE, HIGH);
+                digitalWrite(segF, HIGH);
+                digitalWrite(segG, HIGH);
+                //digitalWrite(dp,LOW);
+                delay(1000);
+                break;
+ 
+                case 2:// when count value is 2 show”2” on disp
+                digitalWrite(segA, LOW);
+                digitalWrite(segB, LOW);
+                digitalWrite(segC, HIGH);
+                digitalWrite(segD, LOW);
+                digitalWrite(segE, LOW);
+                digitalWrite(segF, HIGH);
+                digitalWrite(segG, LOW);
+                //digitalWrite(dp,LOW);
+                delay(1000);
+                break;
+ 
+                case 3:// when count value is 3 show”3” on disp
+                digitalWrite(segA, LOW);
+                digitalWrite(segB, LOW);
+                digitalWrite(segC, LOW);
+                digitalWrite(segD, LOW);
+                digitalWrite(segE, HIGH);
+                digitalWrite(segF, HIGH);
+                digitalWrite(segG, LOW);
+                //digitalWrite(dp,LOW);
+                delay(1000);
+                break;
+ 
+                case 4:// when count value is 4 show”4” on disp
+                digitalWrite(segA, HIGH);
+                digitalWrite(segB, LOW);
+                digitalWrite(segC, LOW);
+                digitalWrite(segD, HIGH);
+                digitalWrite(segE, HIGH);
+                digitalWrite(segF, LOW);
+                digitalWrite(segG, LOW);
+                //digitalWrite(dp,LOW);
+                delay(1000);
+                break;
+ 
+                case 5:// when count value is 5 show”5” on disp
+                digitalWrite(segA, LOW);
+                digitalWrite(segB, HIGH);
+                digitalWrite(segC,LOW);
+                digitalWrite(segD, LOW);
+                digitalWrite(segE, HIGH);
+                digitalWrite(segF, LOW);
+                digitalWrite(segG, LOW);
+                //digitalWrite(dp,LOW);
+                delay(1000);
+                break;
+ 
+}
+  }
+}
